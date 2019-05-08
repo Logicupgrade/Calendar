@@ -13,7 +13,7 @@ function Event(id, title, date, photo, max_seat_count, time_start, time_end)
     event_time_start          = time_start;
     event_time_end            = time_end;
     
-    //******** Get functions for Event Object *****
+    //******** Get functions ***************
     this.getEventID = function()
     {
         return event_id;

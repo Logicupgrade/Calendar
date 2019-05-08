@@ -1,0 +1,98 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>Calendar</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="js/functions.js"></script>
+        <script src="js/Models/Event.js"></script>
+        <script src="js/Models/Guest.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <script>
+                var rows = 6;
+                var cols = 7;
+                var heading = "Month";
+                var column_headings = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                document.write(table(heading,column_headings,rows,cols));
+            
+                var d = new Date();
+                console.log(d.getMonth() );
+
+                //Testing Event Object
+
+                //Displays Guest List function
+                displayGuests = function()
+                {
+                    var temp_guest_list = "";
+                    Party.getGuestList().forEach(function(current)
+                    {
+                        temp_guest_list += current+"<br>";
+                    })
+                
+                    document.write("<h3>Guest List:"+temp_guest_list+"</h3>");
+                }
+
+                displayMaxSeats =function()
+                {
+                    document.write("<h3>Max Seats:"+Party.getMaxSeats()+"</h3>");
+                }
+
+                displaySeatCount = function()
+                {
+                    document.write("<h3>Actual Guests:"+Party.getSeatCount()+"</h3>");
+                }
+
+                displayEventTitle = function(eventObject)
+                {
+                    document.write("<h3>Event Title:"+eventObject.getTitle()+"</h3>");
+                }
+
+                //Instantiating Event Object and Guest Object
+                var Party = new Event(1, Party, "5/6", "pic.png", 5, '10:30', '11:30');
+
+                var Party_Guest = new Guest("Deborah","Felix", 1);
+                var Party_Guest2 = new Guest("Max","Hamor", 3);
+
+                
+                displayMaxSeats();
+                displaySeatCount();
+
+                Party.addGuest(Party_Guest);
+                Party.addGuest(Party_Guest2);
+
+                Party.event_title = "Deborah's Birthday";
+
+                displayMaxSeats();
+                displaySeatCount();
+
+                displayEventTitle(Party);
+
+                Party.setTitle("Deborah's 8th Birthday Party");
+
+                displayEventTitle(Party);
+
+                displayGuests();
+
+                var Party_Guest3 = new Guest("Bobo","Gejo", 1);
+
+                Party.addGuest(Party_Guest3);
+
+                displayGuests();
+                displayMaxSeats();
+                displaySeatCount();
+
+                Party.deleteGuest(Party_Guest2);
+                displayGuests();
+                displayMaxSeats();
+                displaySeatCount();
+
+
+
+
+
+            </script>
+        </div>
+        
+    </body>
+</html>

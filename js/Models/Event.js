@@ -147,6 +147,31 @@ function Event(id, title, date, photo, max_seat_count, time_start, time_end)
     }
 }
 
+var today = new Date();
+var currentYear = today.getFullYear();
+var currentMonth = today.getMonth();
+
+var month = new EventMonth(currentYear, currentMonth);
+var days = month.days();
+
+var html = '<table>';
+$.each(days, function(){
+    let events = this.events();
+    html += '<td>' + this.date;
+    // display days
+    $.each(events, function(){
+        html += '<span class="event' + this.id + '">' + this.title + '</span>';
+        // display events
+    })
+    html += '</td>'
+})
+html += '</table>';
+
+
+
+
+
+
 
 
 

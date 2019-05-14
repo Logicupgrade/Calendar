@@ -1,9 +1,9 @@
 
 function Day(dayNumber)
 {
-    const day_number  = dayNumber;
-    event_id_list   = [];
-    event_count     = 0;
+    const day_number    = dayNumber;
+    event_array         = [];
+    event_count         = 0;
 
     //******** Get functions ***************
     this.getDayNumber = function()
@@ -13,7 +13,7 @@ function Day(dayNumber)
 
     this.getEvents = function()
     {
-        return event_id_list;
+        return event_array;
     }
 
     this.getEventCount = function()
@@ -22,29 +22,30 @@ function Day(dayNumber)
     }
 
     //******** Set functions ***************
-    this.addEvent = function(EventID)
+    this.addEvent = function(Event)
     {
-        event_id_list.push(EventID);
+        //may wish to incorporate max event count
+        event_array.push(Event);
         event_count++;
     }
 
-    this.deleteEvent = function(EventID)
+    this.deleteEvent = function(Event)
     {
-        //have EventIDs to delete
+        //have Events to delete
         if( event_count > 0)
         {
-            function findEventID(currentEventID)
+            function findEvent(currentEvent)
             {
-                return currentEventID === EventID;
+                return currentEvent.getID() == Event.getID();
             }
 
             //EventID index in event_id_list else -1
-            event_id_list_index = event_id_list.findIndex(findEventID);
+            event_list_index = event_array.findIndex(findEvent);
 
             //if EventID found in array
-            if(event_id_list_index > 0)
+            if(event_list_index > 0)
             {
-                event_guest_list.splice(event_id_list_index,1);
+                event_array.splice(event_list_index,1);
                 event_count--;
             }
 

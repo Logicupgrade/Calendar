@@ -4,8 +4,11 @@
         <title>Calendar</title>
         <link rel="stylesheet" href="style.css">
         <script src="js/functions.js"></script>
-        <script src="js/Models/Event.js"></script>
         <script src="js/Models/Guest.js"></script>
+        <script src="js/Models/Event.js"></script>
+        <script src="js/Models/Day.js"></script>
+        <script src="js/Models/Month.js"></script>
+
     </head>
     <body>
         <div id="container">
@@ -19,7 +22,9 @@
                 var d = new Date();
                 console.log(d.getMonth() );
 
-                //Testing Event Object
+                //Testing Event Object*****************************************
+
+                /*
 
                 //Displays Guest List function
                 displayGuests = function()
@@ -49,7 +54,7 @@
                 }
 
                 //Instantiating Event Object and Guest Object
-                var Party = new Event(1, Party, "5/6", "pic.png", 5, '10:30', '11:30');
+                var Party = new Event(1, "Party", "5/6", "pic.png", 5, '10:30', '11:30');
 
                 var Party_Guest = new Guest("Deborah","Felix", 1);
                 var Party_Guest2 = new Guest("Max","Hamor", 3);
@@ -87,10 +92,31 @@
                 displayMaxSeats();
                 displaySeatCount();
 
+                */
+                //Testing Day Object*****************************************
 
+                //Testing Month Object*****************************************
 
+                monthNumber = 4; //May
+                year        =2019;
 
+                currentMonth = new Month(monthNumber,year);
+                
+                document.write("<h3>Month:"+currentMonth.getTitle()+"("+currentMonth.getMonthNumber()+")"+"</h3>");
+                document.write("<h3>Number of Days in Month:"+currentMonth.getDayCount()+"</h3>");
+                document.write("<h3>Number of first day of month:"+currentMonth.getFirstDay()+"</h3>");
 
+                document.write("<h3>Array of days in month:"+currentMonth.getDays()+"</h3>");
+                document.write("<h3>Day Event Count:"+currentMonth.getExactDay(5).getEventCount()+"</h3>");
+                
+                var Party = new Event(1,"Party", 5, "pic.png", 5, '10:30', '11:30');
+
+                currentMonth.getExactDay( Party.getDate() ).addEvent(Party);
+
+                document.write("<h3>Day Event Count:"+currentMonth.getExactDay(5).getEventCount()+"</h3>");
+                document.write("<h3>Day Event Title:"+currentMonth.getExactDay(5).getEvents()[0].getTitle()+"</h3>");
+
+                //order events from starting times?????
             </script>
         </div>
         

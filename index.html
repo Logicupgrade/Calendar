@@ -8,19 +8,22 @@
         <script src="js/Models/Event.js"></script>
         <script src="js/Models/Day.js"></script>
         <script src="js/Models/Month.js"></script>
+        <script src="js/Views/displayCalendar.js"></script>
 
     </head>
     <body>
         <div id="container">
             <script>
-                var rows = 6;
-                var cols = 7;
-                var heading = "Month";
-                var column_headings = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                document.write(table(heading,column_headings,rows,cols));
-            
-                var d = new Date();
-                console.log(d.getMonth() );
+
+                CurrentDate     = new Date();
+                currentMonth    = CurrentDate.getMonth();
+                currentYear     = CurrentDate.getFullYear();
+
+                Month = new Month(currentMonth+5,currentYear);
+
+                displayCalendar(Month);
+
+
 
                 //Testing Event Object*****************************************
 
@@ -97,6 +100,8 @@
 
                 //Testing Month Object*****************************************
 
+                /*
+
                 monthNumber = 4; //May
                 year        =2019;
 
@@ -117,6 +122,9 @@
                 document.write("<h3>Day Event Title:"+currentMonth.getExactDay(5).getEvents()[0].getTitle()+"</h3>");
 
                 //order events from starting times?????
+
+                */
+
             </script>
         </div>
         

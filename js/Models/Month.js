@@ -1,6 +1,7 @@
 function Month(monthNumber,yearNumber)
 {
     //current month number (starting at 0)
+    year                    = yearNumber;
     month_of_year           = monthNumber;
     month_titles            = ["January","February","March","April",
                                 "May","June","July","August",
@@ -11,7 +12,7 @@ function Month(monthNumber,yearNumber)
     number_of_days          = new Date(yearNumber,(monthNumber+1),0); //monthNumber starts at 0 this does not
     number_of_days          =number_of_days.getDate();
 
-    //Number of first day of month (0-7 : sun-sat)
+    //Number of first day of month (0-6 : sun-sat)
     first_day_of_month      = new Date(yearNumber,(monthNumber),1);
     first_day_of_month      = first_day_of_month.getDay();
 
@@ -24,6 +25,11 @@ function Month(monthNumber,yearNumber)
     }
 
     //******** Get functions ***************
+    this.getYear = function()
+    {
+        return year;
+    }
+    
     this.getTitle = function()
     {
         return current_month_title;

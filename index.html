@@ -13,15 +13,60 @@
     </head>
     <body>
         <div id="container">
+                
+                <input type ="button" id = "button" onclick="previous()" value = "Previous">
+                <input type ="button" id = "button" onclick="next()" value = "Next">
+                
             <script>
+//////NEEEDS BOUNDARIES FOR MONTH TRAVERSING
+                TodaysDate = new Date();
 
-                CurrentDate     = new Date();
-                currentMonth    = CurrentDate.getMonth();
-                currentYear     = CurrentDate.getFullYear();
+                if(sessionStorage.monthForward && sessionStorage.monthBackward)
+                {
+                    //are these globals??
+                    month_forward = parseInt(sessionStorage.monthForward,16);
+                    month_backward = parseInt(sessionStorage.monthBackward,16);    
+                }
+                else if(sessionStorage.monthForward)
+                {
+                    month_forward = parseInt(sessionStorage.monthForward,16);
+                    month_backward =0;
+                }
+                else if(sessionStorage.monthBackward)
+                {
+                    month_backward = parseInt(sessionStorage.monthBackward,16);
+                    month_forward =0;
+                }
+                else
+                {
+                    month_forward =0;
+                    month_backward =0;
+                }
 
-                Month = new Month(currentMonth+5,currentYear);
+                //console.log(num.toString(16));
+                navMonth = month_forward - month_backward;
+                currentMonth = TodaysDate.getMonth() + navMonth;
+                currentYear = TodaysDate.getFullYear();
+
+                Month = new Month(currentMonth,currentYear);
 
                 displayCalendar(Month);
+
+                function next()
+                {
+                    month_forward +=1; 
+                    sessionStorage.monthForward = month_forward.toString(16);
+                    location.reload(true);
+                }
+
+                function previous()
+                {
+                    month_backward +=1;
+                    sessionStorage.monthBackward = month_backward.toString(16);
+                    location.reload(true);
+                }
+
+                
 
 
 

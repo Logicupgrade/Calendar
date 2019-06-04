@@ -1,12 +1,12 @@
 
 function displayCalendar(CurrentMonth)
 {
-    table = "";
-    day_titles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    columns = day_titles.length;
-    idNum = 1;
+    var table = "";
+    var day_titles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var columns = day_titles.length;
+    var idNum = 1;
 
-    dayIndex = 0;
+    var dayIndex = 0;
     
     table+="<tr>"
 
@@ -50,7 +50,7 @@ function displayCalendar(CurrentMonth)
         table+='</tr>';
     }
 
-    calendar = "";
+    var calendar = "";
     calendar+= "<h2>"+CurrentMonth.getTitle();
     calendar+= "  "+CurrentMonth.getYear()+"</h2>";
     calendar+= "<table>"+table+"</table>";

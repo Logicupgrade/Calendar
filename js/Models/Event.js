@@ -3,15 +3,15 @@
 //Event(id) and properties come from database
 function Event(id, title, date, photo, max_seat_count, time_start, time_end)
 {
-    event_id                  = id;
-    event_title               = title;
-    event_date                = date;
-    event_photo               = photo;
-    event_max_seat_count      = max_seat_count;
-    event_actual_seat_count   = 0;
-    event_guest_list          =[""];
-    event_time_start          = time_start;
-    event_time_end            = time_end;
+    var event_id                  = id;
+    var event_title               = title;
+    var event_date                = date;
+    var event_photo               = photo;
+    var event_max_seat_count      = max_seat_count;
+    var event_actual_seat_count   = 0;
+    var event_guest_list          =[""];
+    var event_time_start          = time_start;
+    var event_time_end            = time_end;
     
     //******** Get functions ***************
     this.getEventID = function()

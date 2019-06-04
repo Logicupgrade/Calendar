@@ -19,7 +19,9 @@
                 
             <script>
 //////NEEEDS BOUNDARIES FOR MONTH TRAVERSING
-                TodaysDate = new Date();
+                var TodaysDate = new Date();
+                var month_forward;
+                var month_backward;
 
                 if(sessionStorage.monthForward && sessionStorage.monthBackward)
                 {
@@ -44,11 +46,11 @@
                 }
 
                 //console.log(num.toString(16));
-                navMonth = month_forward - month_backward;
-                currentMonth = TodaysDate.getMonth() + navMonth;
-                currentYear = TodaysDate.getFullYear();
+                var navMonth = month_forward - month_backward;
+                var currentMonth = TodaysDate.getMonth() + navMonth;
+                var currentYear = TodaysDate.getFullYear();
 
-                Month = new Month(currentMonth,currentYear);
+                var Month = new Month(currentMonth,currentYear);
 
                 displayCalendar(Month);
 

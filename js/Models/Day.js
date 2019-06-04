@@ -2,8 +2,8 @@
 function Day(dayNumber)
 {
     const day_number    = dayNumber;
-    event_array         = [];
-    event_count         = 0;
+    var event_array         = [];
+    var event_count         = 0;
 
     //******** Get functions ***************
     this.getDayNumber = function()

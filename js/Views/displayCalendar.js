@@ -51,8 +51,13 @@ function displayCalendar(CurrentMonth)
     }
 
     var calendar = "";
-    calendar+= "<h2>"+CurrentMonth.getTitle();
-    calendar+= "  "+CurrentMonth.getYear()+"</h2>";
+
+    calendar+= '<div id="date">';
+    calendar+= '<button onclick="previous()"><div class="arrow left"></div></button>';
+    calendar+= '<h2 id="date_head">'+CurrentMonth.getTitle()+'  '+CurrentMonth.getYear()+'</h2>';
+    calendar+= '<button onclick="next()"><div class="arrow right"></div></button>';
+    calendar+= '</div>';
+
     calendar+= "<table>"+table+"</table>";
 
     document.write(calendar);

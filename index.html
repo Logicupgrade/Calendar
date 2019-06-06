@@ -20,7 +20,8 @@
 
                 var month_change            =0;
                 var month_change_direction  =0;
-                var navMonth                =0;
+                var minusYears              =0;
+                var plusYears               =0;
                 var currentMonth            =TodaysDate.getMonth();
                 var currentYear             =TodaysDate.getFullYear();
 
@@ -32,52 +33,34 @@
                     month_change            = parseInt(sessionStorage.month_change,16);
                     month_change_direction  = parseInt(sessionStorage.month_change_direction);
                 }
-                console.log("month_change: "+month_change);
-                console.log("month_change_dir: "+month_change_direction);
-
+            
                 //determine forward or backward
                 if(month_change_direction === 1)
                 {
-                    navMonth = month_change;
+                    currentMonth = currentMonth + month_change;
                 }
                 else if(month_change_direction === 2)
                 {
-                    navMonth = 0 - month_change;
+                    currentMonth = currentMonth - month_change;
                 }
 
-                currentMonth = currentMonth + navMonth;
-
-                // if month is after december go to january add a year
-                if(navMonth > 0)
-                {
-
-                    if( (currentMonth) > 11)
-                    {
-                        //!important order!
-                        currentYear = currentYear+Math.floor(currentMonth/11);
-                        currentMonth = (currentMonth%11)-1;
-                    }
-                }
                 //if month is before january go to december subtract a year
-                else if(navMonth < 0)
+                if(currentMonth < 0)
                 {
-                    if(currentMonth < 0 && ((Math.abs(currentMonth)%12)===0) )
-                    {
-                        currentYear = currentYear-Math.floor((month_change+11)/11);
-                        currentMonth = (Math.abs(currentMonth)%12);
-                    }
-                    if(currentMonth < 0)
-                    {
-                        currentYear = currentYear-Math.floor((month_change+11)/11);
-                        console.log("currentMonth: " + currentMonth);
-                        console.log("math: " + Math.abs(currentMonth)%12);
-                        currentMonth = 12-(Math.abs(currentMonth)%12);
-                    }
-                    
-                }
+                    currentMonth = Math.abs(currentMonth);
+                    minusYears =  Math.ceil(currentMonth/12);
 
-                console.log("currentMonth: " + currentMonth);
-                
+                    currentYear = currentYear-minusYears;
+                    currentMonth = (12*minusYears) - currentMonth;
+                }
+                // if month is after december go to january add a year
+                else if(currentMonth > 11)
+                {
+                    plusYears =  Math.floor(currentMonth/12);
+
+                    currentYear = currentYear+plusYears;
+                    currentMonth = currentMonth%12;
+                }
 
                 //instantiate month obj with current working date
                 Month = new Month(currentMonth,currentYear);

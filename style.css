@@ -2,6 +2,8 @@ body
 {
     margin:0;
     padding:0;
+
+    /* background-color:#000; */
 }
 #date
 {
@@ -15,13 +17,24 @@ body
     padding:0;
     margin:0;
     text-align: center;
+
+    color:#6939ec;
 }
 
 button
 {
     border: none;
-    width:75px;
+    width:50px;
     height:50px;
+
+    background-color: white;
+    /* border: #6939ec solid 1px; */
+    border-radius: 25px;
+}
+
+button:hover
+{
+    background-color: #3e23d3;
 }
 
 .arrow 
@@ -53,6 +66,8 @@ button
 table
 {
     margin:20px auto;
+    /* border-collapse: collapse; */
+    border-spacing: 1.25px;
 }
 
 .day
@@ -60,12 +75,19 @@ table
     width:100px;
     height:100px;
     text-align:center;
-
-    border:black 3px solid;
-    background-color:rgba(122, 6, 11, 0.904);
+    border:#3e23d3 1px solid;
+    border-radius: 3px;
+    
+    color:#3e23d3;
 }
 
 td:hover
 {
-    border:rgb(192, 149, 6) 3px solid;
+    border:#9e16f8fd 1px solid;
+    background-color:#6939ec59;
+}
+
+.block_
+{
+    visibility: hidden;
 }
